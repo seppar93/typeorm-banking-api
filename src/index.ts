@@ -1,6 +1,7 @@
 // create connection is deprecated
 // import {createConnection} from 'typeorm'
 import { DataSource } from "typeorm";
+import { Client } from "./entities/Client";
 
 const main = async () => {
   try {
@@ -11,12 +12,16 @@ const main = async () => {
       username: "test",
       password: "test",
       database: "typeorm",
+      entities: [Client],
+      synchronize: true, // pretty much a migration
     });
     console.log("Connected to Postgres");
   } catch (error) {
     console.log(error);
-    throw new Error('Unable to connect to database')
+    throw new Error("Unable to connect to database");
   }
 };
 
 main();
+
+// tables == entity
