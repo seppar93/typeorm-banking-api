@@ -1,44 +1,12 @@
 import {
   Entity,
-  BaseEntity,
   Column,
-  PrimaryColumn,
-  CreateDateColumn,
-  UpdateDateColumn,
 } from "typeorm"; //decorator
+import { Person } from "./utils/Person";
 
 @Entity("client")
-// BaseEntity is for CRUD operations
-export class Client extends BaseEntity {
-  // defining the columns in our table
-
-  //   primary Column ID
-  @PrimaryColumn({
-    type: "uuid",
-  })
-  @CreateDateColumn()
-  created_at: Date;
-
-  @UpdateDateColumn()
-  updated_at: Date;
-
-  @Column()
-  fist_name: string;
-
-  @Column()
-  last_name: string;
-
-  @Column({
-    unique: true,
-  })
-  email: string;
-
-  @Column({
-    unique: true,
-    length: 10,
-  })
-  card_number: string;
-
+// inheriting from Person
+export class Client extends Person {
   @Column({
     type: "numeric",
     // numeric is used for money
@@ -67,5 +35,3 @@ export class Client extends BaseEntity {
   })
   family_members: string[];
 }
-
-// inheritance

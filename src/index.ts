@@ -1,6 +1,7 @@
 // create connection is deprecated
 // import {createConnection} from 'typeorm'
 import { DataSource } from "typeorm";
+import { Banker } from "./entities/Banker";
 import { Client } from "./entities/Client";
 
 const main = async () => {
@@ -12,7 +13,7 @@ const main = async () => {
       username: "test",
       password: "test",
       database: "typeorm",
-      entities: [Client],
+      entities: [Client, Banker],
       synchronize: true, // pretty much a migration
     });
     console.log("Connected to Postgres");
