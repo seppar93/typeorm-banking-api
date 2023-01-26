@@ -3,6 +3,7 @@
 import { DataSource } from "typeorm";
 import { Banker } from "./entities/Banker";
 import { Client } from "./entities/Client";
+import { Transaction } from "./entities/Transactions";
 
 const main = async () => {
   try {
@@ -13,7 +14,7 @@ const main = async () => {
       username: "test",
       password: "test",
       database: "typeorm",
-      entities: [Client, Banker],
+      entities: [Client, Banker, Transaction],
       synchronize: true, // pretty much a migration
     });
     console.log("Connected to Postgres");

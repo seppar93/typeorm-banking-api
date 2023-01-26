@@ -1,12 +1,13 @@
-import {
-  Entity,
-  Column,
-} from "typeorm"; //decorator
+import { Entity, Column, OneToMany } from "typeorm"; //decorator
+import { Transaction } from "./Transactions";
 import { Person } from "./utils/Person";
 
 @Entity("client")
 // inheriting from Person
 export class Client extends Person {
+  @OneToMany(() => Transaction, (Transaction) => Transaction.client)
+  transactions: Transaction[];
+
   @Column({
     type: "numeric",
     // numeric is used for money
